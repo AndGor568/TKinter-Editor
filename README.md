@@ -92,3 +92,5 @@
 ## Лицензия
 
 [MIT](LICENSE)
+## Скриншоты
+![TKinter editor](docs/screenshot.png)
