@@ -74,12 +74,6 @@ python tkinter_editor.py examples/widgets_demo.tkform
 
 Полный список с описанием: меню **Справка** (F1).
 
-## Сборка в exe (Windows)
-
-```bash
-pip install pyinstaller
-pyinstaller --onefile --noconsole --name "TKinter editor" tkinter_editor.py
-```
 
 ## Формат проекта
 
