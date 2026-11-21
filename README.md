@@ -32,13 +32,8 @@
 
 Нужен Python 3.8+ (tkinter входит в установщик с [python.org](https://www.python.org/downloads/)).
 
-```bash
-git clone https://github.com/<ваш-аккаунт>/TKinter-editor.git
-cd TKinter-editor
-python tkinter_editor.py
-# или сразу с проектом:
-python tkinter_editor.py examples/widgets_demo.tkform
-```
+
+и скачайте релиз
 
 Основная платформа: **Windows**. На Linux и macOS программа не проверялась: возможны мелочи
 (например, форма курсора на маркерах или прокрутка колесом).
