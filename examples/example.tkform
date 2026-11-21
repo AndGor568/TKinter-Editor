@@ -1,0 +1,239 @@
+{
+  "version": 2,
+  "form": {
+    "title": "Пример: переменные и события",
+    "width": 560,
+    "height": 380,
+    "bg": "#1e293b",
+    "code_global": "import random\n\n\ndef random_color():\n    \"\"\"Случайный цвет вида #rrggbb.\"\"\"\n    return \"#%06x\" % random.randint(0, 0xFFFFFF)\n",
+    "on_start": "print(\"Форма запущена, привет: \" + greeting)\nset_text(\"entry1\", greeting)\n",
+    "on_close": "print(\"Окно закрыто, нажатий было:\", clicks)\n",
+    "timer_ms": 1000,
+    "on_timer": "seconds += 1\n"
+  },
+  "variables": [
+    {
+      "name": "clicks",
+      "type": "int",
+      "value": 0
+    },
+    {
+      "name": "seconds",
+      "type": "int",
+      "value": 0
+    },
+    {
+      "name": "greeting",
+      "type": "str",
+      "value": "Привет"
+    },
+    {
+      "name": "history",
+      "type": "list",
+      "value": []
+    }
+  ],
+  "items": [
+    {
+      "id": 1,
+      "type": "Label",
+      "props": {
+        "name": "title",
+        "x": 20,
+        "y": 14,
+        "width": 520,
+        "height": 36,
+        "text": "Привет из TKinter editor!",
+        "anchor": "w",
+        "relief": "flat",
+        "bd": 0,
+        "action": "set_prop(\"title\", fg=random_color())\n",
+        "font_family": "Segoe UI",
+        "font_size": 16,
+        "bold": true,
+        "italic": false,
+        "bg": "",
+        "fg": "#ffffff"
+      }
+    },
+    {
+      "id": 2,
+      "type": "Label",
+      "props": {
+        "name": "counter",
+        "x": 20,
+        "y": 64,
+        "width": 250,
+        "height": 28,
+        "text": "Нажатий: {clicks}",
+        "anchor": "w",
+        "relief": "flat",
+        "bd": 0,
+        "action": "",
+        "font_family": "Segoe UI",
+        "font_size": 13,
+        "bold": false,
+        "italic": false,
+        "bg": "",
+        "fg": "#fbbf24"
+      }
+    },
+    {
+      "id": 3,
+      "type": "Label",
+      "props": {
+        "name": "timer_label",
+        "x": 290,
+        "y": 64,
+        "width": 250,
+        "height": 28,
+        "text": "Секунд в окне: {seconds}",
+        "anchor": "w",
+        "relief": "flat",
+        "bd": 0,
+        "action": "",
+        "font_family": "Segoe UI",
+        "font_size": 13,
+        "bold": false,
+        "italic": false,
+        "bg": "",
+        "fg": "#93c5fd"
+      }
+    },
+    {
+      "id": 4,
+      "type": "Entry",
+      "props": {
+        "name": "entry1",
+        "x": 20,
+        "y": 110,
+        "width": 300,
+        "height": 30,
+        "text": "",
+        "justify": "left",
+        "relief": "sunken",
+        "bd": 2,
+        "state": "normal",
+        "on_enter": "msg(\"Ты ввёл: \" + get_text(\"entry1\"))\n",
+        "on_change": "history.append(get_text(\"entry1\"))\nset_text(\"last\", \"Длина текста: \" + str(len(get_text(\"entry1\"))))\n",
+        "font_family": "Segoe UI",
+        "font_size": 10,
+        "bold": false,
+        "italic": false,
+        "bg": "",
+        "fg": ""
+      }
+    },
+    {
+      "id": 5,
+      "type": "Label",
+      "props": {
+        "name": "last",
+        "x": 20,
+        "y": 146,
+        "width": 400,
+        "height": 26,
+        "text": "Длина текста: 0",
+        "anchor": "w",
+        "relief": "flat",
+        "bd": 0,
+        "action": "",
+        "font_family": "Segoe UI",
+        "font_size": 10,
+        "bold": false,
+        "italic": false,
+        "bg": "",
+        "fg": "#cbd5e1"
+      }
+    },
+    {
+      "id": 6,
+      "type": "Button",
+      "props": {
+        "name": "button1",
+        "x": 20,
+        "y": 190,
+        "width": 170,
+        "height": 38,
+        "text": "Нажми меня ({clicks})",
+        "relief": "flat",
+        "bd": 0,
+        "state": "normal",
+        "action": "clicks += 1\nset_prop(\"button1\", bg=random_color())\nif clicks == 5:\n    msg(\"Пять нажатий!\")\n",
+        "font_family": "Segoe UI",
+        "font_size": 10,
+        "bold": true,
+        "italic": false,
+        "bg": "#22c55e",
+        "fg": "#ffffff"
+      }
+    },
+    {
+      "id": 7,
+      "type": "Checkbutton",
+      "props": {
+        "name": "check1",
+        "x": 210,
+        "y": 196,
+        "width": 220,
+        "height": 28,
+        "text": "Спрятать кнопку",
+        "checked": false,
+        "relief": "flat",
+        "bd": 0,
+        "action": "if get_text(\"check1\"):\n    hide(\"button1\")\nelse:\n    show(\"button1\")\n",
+        "font_family": "Segoe UI",
+        "font_size": 10,
+        "bold": false,
+        "italic": false,
+        "bg": "",
+        "fg": "#e2e8f0"
+      }
+    },
+    {
+      "id": 8,
+      "type": "Button",
+      "props": {
+        "name": "button_reset",
+        "x": 20,
+        "y": 250,
+        "width": 170,
+        "height": 34,
+        "text": "Сбросить счётчик",
+        "relief": "raised",
+        "bd": 2,
+        "state": "normal",
+        "action": "if ask_yes_no(\"Обнулить счётчик?\"):\n    clicks = 0\n",
+        "font_family": "Segoe UI",
+        "font_size": 10,
+        "bold": false,
+        "italic": false,
+        "bg": "",
+        "fg": ""
+      }
+    },
+    {
+      "id": 9,
+      "type": "Button",
+      "props": {
+        "name": "button_close",
+        "x": 420,
+        "y": 320,
+        "width": 120,
+        "height": 34,
+        "text": "Закрыть",
+        "relief": "raised",
+        "bd": 2,
+        "state": "normal",
+        "action": "quit_app()\n",
+        "font_family": "Segoe UI",
+        "font_size": 10,
+        "bold": false,
+        "italic": false,
+        "bg": "",
+        "fg": ""
+      }
+    }
+  ],
+  "next_id": 10
+}
